@@ -50,6 +50,15 @@ router.post '/records', (req, res) ->
     res.json record_feature
   fulcrum.records.create req.body, callback
 
+router.get '/record/:record_id', (req, res) ->
+  callback = (error, record) ->
+    if error
+      console.log "Error: #{error}"
+      res.send 'Error'
+      return
+    res.json record
+  fulcrum.records.find req.params.record_id, callback
+
 router.post '/photos', (req, res) ->
   fulcrum_req = request('https://api.fulcrumapp.com/api/v2/photos')
   fulcrum_req_headers =
