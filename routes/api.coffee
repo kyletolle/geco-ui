@@ -56,7 +56,8 @@ router.get '/record/:record_id', (req, res) ->
       console.log "Error: #{error}"
       res.send 'Error'
       return
-    res.json record
+    record_feature = recordToFeature record.record
+    res.json record_feature
   fulcrum.records.find req.params.record_id, callback
 
 router.post '/photos', (req, res) ->
