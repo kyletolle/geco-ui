@@ -18,6 +18,10 @@ block content
             a(href='#new', id='new-record-a')
               span.white.glyphicon.glyphicon-plus
               |&nbsp;New Record
+          li
+            a(href='#alert', id='new-alert-a')
+              span.white.glyphicon.glyphicon-bell
+              |&nbsp;Receive Alerts
   .content
     #map-container
     .modal.fade.record-modal(role='dialog', id='record-modal', tabindex='-1')
@@ -66,3 +70,33 @@ block content
           .modal-body
             h3.
               Record Saved
+    script(id='new-alert-modal-template', type='text/x-template')
+      .modal.fade.new-alert-modal(role='dialog', id='new-alert-modal', tabindex='-1')
+        .modal-dialog
+          .modal-content
+            form(role='form')
+              .modal-header
+                button(type='button', class='close', data-dismiss='modal')
+                  span(aria-hidden='true').
+                    &times;
+                  span.sr-only.
+                    Close
+                h4.modal-title(id='myModalLabel').
+                  New Alert
+              .modal-body
+                .content
+              .modal-footer
+                button.btn.btn-default(type='button', data-dismiss='modal').
+                  Cancel
+                button.create.btn.btn-primary(type='submit').
+                  Submit
+    .modal.fade.saved-alert-modal(role='dialog', id='saved-alert-modal', tabindex='-1')
+      .modal-dialog
+        .modal-content
+          .modal-body
+            h3.
+              Subscribed to Alerts!
+            p.
+              You should receive email and/or text alerts when someone creates a new Activity during GeCo in the Rockies.
+            p.
+              Once again, the emails and phone numbers are only for use in this little application and will be deleted at the end of GeCo in the Rockies!
