@@ -64,12 +64,33 @@ class App
       else
         callback null, alert_form
 
+  getRecord: (callback) ->
+    record_utils.getRecord (error, record) ->
+      if error
+        callback error
+      else
+        callback null, record
+
+
   addRecord: (record_as_feature) ->
     @features_layer.addData record_as_feature
 
   nameApp: (app_name) ->
     document.title = app_name
     $('#brand').text app_name
+
+  displayCurrentRecord: (error, results) ->
+    if error
+      console.log error
+      return
+
+    form_json   = results.form
+    record_json = results.record
+
+    @form = new Form form_json
+
+    record = new Record record_json, @form
+    record_display = new RecordViewer @form, record
 
   formAndRecordsCallback: (error, results) =>
     if error
@@ -96,6 +117,8 @@ class App
 
     @features_layer.addData records
     @map.fitBounds @features_layer.getBounds()
+
+    async.parallel {form: @getForm, record: @getRecord}, @displayCurrentRecord
 
 app = new App()
 app.init()
