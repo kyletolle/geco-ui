@@ -18,6 +18,15 @@ router.get '/form', (req, res) ->
     res.json form
   fulcrum.forms.find constants.form_id, callback
 
+router.get '/alert_form', (req, res) ->
+  callback = (error, alert_form) ->
+    if error
+      console.log "Error: #{error}"
+      res.send 'Error'
+      return
+    res.json alert_form
+  fulcrum.forms.find constants.alert_form_id, callback
+
 router.get '/records', (req, res) ->
   callback = (error, records) ->
     if error
