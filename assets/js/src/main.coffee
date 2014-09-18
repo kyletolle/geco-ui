@@ -7,6 +7,7 @@ form_utils    = require './form_utils'
 record_utils  = require './records/utils'
 RecordViewer  = require './records/viewer'
 RecordCreator = require './records/creator'
+AlertCreator  = require './alerts/creator'
 
 jQuery.fn.serializeObject = ->
   arrayData = @serializeArray()
@@ -32,12 +33,15 @@ class App
   init: ->
     @map = map_utils.createMap 'map-container'
     @initEvents()
-    async.parallel {form: @getForm, records: @getRecords}, @formAndRecordsCallback
+    async.parallel {form: @getForm, records: @getRecords, alert_form: @getAlertForm}, @formAndRecordsCallback
 
   initEvents: ->
     $('#new-record-a').on 'click', (event) =>
       event.preventDefault()
       record_creator = new RecordCreator @form, @
+    $('#new-alert-a').on 'click', (event) =>
+      event.preventDefault()
+      alert_creator = new AlertCreator @alert_form, @
 
   getForm: (callback) ->
     form_utils.getForm (error, form) ->
@@ -53,6 +57,13 @@ class App
       else
         callback null, records
 
+  getAlertForm: (callback) ->
+    form_utils.getAlertForm (error, alert_form) ->
+      if error
+        callback error
+      else
+        callback null, alert_form
+
   addRecord: (record_as_feature) ->
     @features_layer.addData record_as_feature
 
@@ -65,10 +76,12 @@ class App
       console.log error
       return
 
-    form_json = results.form
-    records   = results.records
+    form_json       = results.form
+    alert_form_json = results.alert_form
+    records         = results.records
 
-    @form = new Form form_json
+    @form       = new Form form_json
+    @alert_form = new Form alert_form_json
 
     @nameApp @form.name()
 
