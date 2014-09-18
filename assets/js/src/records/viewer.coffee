@@ -124,6 +124,7 @@ class Viewer
 
   init: ->
     @generateHTMLContent()
+    location.href = "?record_id=" + @record.record_geojson.id
     @$modal_container.find('.modal-title').html @record.title()
     @$modal_container.find('.modal-body').html @html_content
     @$modal_container.modal()

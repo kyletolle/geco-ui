@@ -14,7 +14,7 @@ createMap = (div_id, options) ->
 
   streets_layer   = new L.TileLayer layer_configs.mapbox_streets.url,   layer_configs.mapbox_streets.options
   satellite_layer = new L.TileLayer layer_configs.mapbox_satellite.url, layer_configs.mapbox_satellite.options
-  
+
   map.addLayer streets_layer
 
   if layersControl is undefined or layersControl
