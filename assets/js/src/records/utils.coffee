@@ -11,6 +11,7 @@ getRecords = (cb) ->
       cb null, records
   xhr xhr_options, xhr_callback
 
+# Tweaked SO answer to work in coffeescript http://stackoverflow.com/a/901144/249218
 getParameterByName = (name) ->
   name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]")
   regex = new RegExp("[\\?&]" + name + "=([^&#]*)")
