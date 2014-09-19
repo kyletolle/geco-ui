@@ -16,6 +16,10 @@ Upload Directly from Camera
 
 ![Upload Directly from Camera](https://dl.dropboxusercontent.com/u/10994537/Screenshot_2014-09-17-21-07-35.png)
 
+### Demo
+
+http://geco.herokuapp.com/
+
 ### Development
 
 The server side is built on node.js and written in CoffeeScript so you'll want to install the necessary dependencies first:
