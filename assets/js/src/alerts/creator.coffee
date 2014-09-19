@@ -84,7 +84,7 @@ class AlertCreator
   generateHTMLContent: ->
     parts =
       [
-        "<p>By subscribing to alerts, you will receive email and/or text alerts when someone creates a new Activity during GeCo in the Rockies 2014.</p>",
+        "<p>By subscribing to alerts, you will receive email and/or text alerts when someone creates a new happening during GeCo in the Rockies 2014.</p>",
         "<p>Don't worry, the emails and phone numbers are only for use in this little application and will be deleted at the end of GeCo in the Rockies 2014.</p>"
       ]
     for element in @form.form_obj.elements
