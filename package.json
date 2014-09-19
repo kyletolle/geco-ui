@@ -2,6 +2,9 @@
   "name": "rogen",
   "version": "0.0.1",
   "private": true,
+  "engines": {
+    "node": "~0.10.32"
+  },
   "scripts": {
     "start": "coffee ./bin/www",
     "build": "browserify -t coffeeify --extension='.coffee' assets/js/src/main.coffee -o assets/js/lib/bundle.js",
