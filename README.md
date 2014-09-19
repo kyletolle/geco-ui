@@ -1,10 +1,8 @@
-## rogen
+## geco-ui
 
-![rogen](https://dl.dropboxusercontent.com/u/10994537/rogen.jpg)
+Built on [rogen](https://github.com/JasonSanford/rogen).
 
-observe and report.
-
-Rogen lets you quickly stand up an app that allows users to create Fulcrum records without authentication or authorization. This can be helpful in emergency response or damage assesment situations where managing users would just get in the way. Creating a data collection app is as simple as providing a Fulcrum API key and form id. All record creation form inputs are automatically set to their proper HTML form equivalents, including photos.
+geco-ui is meant to serve as a way to track what's happening at [GeCo in the Rockies 2014](http://www.gecointherockies.org/); the events people attend and what people think of them. People can also subscribe to SMS and Email alerts when people post new happenings!
 
 Setting Location
 
@@ -23,7 +21,7 @@ Upload Directly from Camera
 The server side is built on node.js and written in CoffeeScript so you'll want to install the necessary dependencies first:
 
 ```bash
-cd /path/to/rogen
+cd /path/to/geco-ui
 npm install
 ```
 
@@ -58,11 +56,14 @@ You'll need to set a couple environment variables that allow you to communicate 
 ```bash
 export FULCRUM_API_KEY=super_long_string_that_is_a_secret
 export FULCRUM_FORM_ID=abc-123-def-456
+heroku config:set FULCRUM_ALERT_FORM_ID=abc-123-def-456
 ```
+
+Do this by creating a `.env` file with those values above, and then `source .env`.
 
 ### Deployment
 
-Rogen is easily deployed to Heroku. First create a Heroku app:
+geco-ui is easily deployed to Heroku. First create a Heroku app:
 
 ```bash
 heroku create
@@ -75,6 +76,7 @@ Then, set the envrionment variables from above:
 ```bash
 heroku config:set FULCRUM_API_KEY=super_long_string_that_is_a_secret
 heroku config:set FULCRUM_FORM_ID=abc-123-def-456
+heroku config:set FULCRUM_ALERT_FORM_ID=abc-123-def-456
 ```
 
 Then, deploy the app:
