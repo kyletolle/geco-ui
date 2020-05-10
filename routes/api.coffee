@@ -6,7 +6,7 @@ Fulcrum = require 'fulcrum-app'
 constants = require '../constants'
 utils     = require '../utils'
 
-fulcrum = new Fulcrum({api_key: constants.api_key})
+fulcrum = new Fulcrum({api_key: constants.api_key, url: 'http://localhost:3000/api/v2/'})
 router  = express.Router()
 
 router.get '/form', (req, res) ->
